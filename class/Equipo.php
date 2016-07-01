@@ -94,7 +94,7 @@ class Equipo
     	}
     }
     
-    /**
+    /*
      * Se buscan todos los equipos activos del usuario 
      * determinado
      */
@@ -114,7 +114,7 @@ class Equipo
     	}
     }
     
-    /**
+    /*
      * Se busca el equipo indicado y se guarda en la clase
      */
     public static function Obtener($pnUsuario, $pnEquipo)

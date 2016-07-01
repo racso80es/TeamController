@@ -11,6 +11,7 @@ function Jugador(){
 	var sApellido2 = '';
 	var sEmail = '';
 	var nImporte = 0;
+	var aLista;
 	
 	// Propiedades
 	Jugador.prototype.IdGet = function() {		
@@ -53,6 +54,13 @@ function Jugador(){
 	};
 	Jugador.prototype.EmailSet = function(psEmail) {
 		sEmail = psEmail;
+	};
+
+	Jugador.prototype.ListaGet = function() {		
+		return aLista;
+	};
+	Jugador.prototype.ListaSet = function(paLista) {
+		aLista = paLista;
 	};
 	
 	function Cargar_Retorno (poDatos) {
@@ -141,28 +149,28 @@ function Jugador(){
 		nConcepto = '';
 		nImporte = 0;
 	};
-	
-	Jugador.prototype.Listar = function(pnEquipo, pnLiga, pnJugador) {
+
+	Jugador.prototype.Listar = function(pnEquipo) {
 		/*
-		 * 02/12/2015
-		 * Se devuelven los Jugadors coincidentes con los filtros
+		 * 01/07/2015
+		 * Se devuelven los jugadores del equipo indicado
 		 */
-		var loRes;
-		
 		$.ajax({
-			url: "Jugador_Listar.php",
-			data: {"pnEquipo" : pnEquipo, "pnLiga" : pnLiga, "pnJugador" : pnJugador},
+			url: "FuncionesAjax.php",
+			data: {"psAccion" : "Jugador_Listar",
+				   "pnEquipo" : pnEquipo},
             async:false,    
             cache:false,   
             dataType:"html",
             type: 'POST',
             success:  function(Retorno){
-            	loRes = JSON.parse(Retorno);
+            	aLista = JSON.parse(Retorno);
             },
             beforeSend:function(){},
-            error:function(objXMLHttpRequest){}
+            error:function(objXMLHttpRequest){
+            	throw objXMLHttpRequest;
+            }
 		});
-		return loRes;
 	};
 	
 	Jugador.prototype.Cargar = function(pnId) {

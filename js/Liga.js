@@ -8,6 +8,7 @@ function Liga(){
 	var nEquipo = 0;
 	var sNombre = '';
 	var sDescripcion = '';
+	var aLista;
 	
 	// Propiedades
 	Liga.prototype.IdGet = function() {		
@@ -37,6 +38,14 @@ function Liga(){
 	Liga.prototype.DescripcionSet = function(psDescripcion) {
 		sDescripcion = psDescripcion;
 	};
+
+	Liga.prototype.ListaGet = function() {		
+		return aLista;
+	};
+	Liga.prototype.ListaSet = function(paLista) {
+		aLista = paLista;
+	};
+	
 	
 	function Balance_FichaBasica(poContenedor,
 		       					 poBalance){
@@ -211,6 +220,29 @@ function Liga(){
 		loBalance = null;
 		loCabecera = null;
 	}
+
+	Liga.prototype.Listar = function(pnEquipo) {
+		/*
+		 * 01/07/2015
+		 * Se devuelven las ligas del equipo indicado
+		 */
+		$.ajax({
+			url: "FuncionesAjax.php",
+			data: {"psAccion" : "Liga_Listar",
+				   "pnEquipo" : pnEquipo},
+            async:false,    
+            cache:false,   
+            dataType:"html",
+            type: 'POST',
+            success:  function(Retorno){
+            	aLista = JSON.parse(Retorno);
+            },
+            beforeSend:function(){},
+            error:function(objXMLHttpRequest){
+            	throw objXMLHttpRequest;
+            }
+		});
+	};
 }
 
 function Balance_CargarPorLiga(){

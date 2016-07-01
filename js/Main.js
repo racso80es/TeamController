@@ -538,24 +538,6 @@ function Jugador_Eliminar_Result(pnId, paResultado){
 	};
 }
 
-function CargarLigas(pnEquipo){
-	/*
-	 * OPG 19/11/2015
-	 * Se devuelve la estructura html con las ligas del equipo indicado
-	 */
-	
-	var lnCon = 0;
-	$.post("Liga_Listar.php", 
-			{ 
-				pnEquipo: pnEquipo
-			}, function(Datos){
-				var loResult = JSON.parse(Datos);
-				for (lnCon=0;lnCon<loResult.length;lnCon++) {
-					Liga_FichaBasica (loResult[lnCon].Lig_Id, pnEquipo, loResult[lnCon].Lig_Nombre, loResult[lnCon].Lig_Descripcion);
-				}
-			});
-}
-
 function Liga_Actualizar (pnEquipo, pnLiga){
 	/*
 	 * OPG 19/11/2015

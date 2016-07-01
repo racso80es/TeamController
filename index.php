@@ -20,12 +20,13 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
-
     <script src="assets/js/chart-master/Chart.js"></script>
     <script src="assets/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="js/Aplicacion.js"></script>
     <script type="text/javascript" src="js/Usuario.js"></script>
     <script type="text/javascript" src="js/Equipo.js"></script>
+    <script type="text/javascript" src="js/Liga.js"></script>
+    <script type="text/javascript" src="js/Jugador.js"></script>
     <script type="text/javascript" src="js/UserException.js"></script>
     <script type="text/javascript" src="js/General.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
